@@ -26,7 +26,6 @@ export default function Home() {
     if (currentIndex < nodes.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // ✅ FIX: signal traversal is complete
       setTraversalDone(true);
     }
   };
@@ -41,14 +40,14 @@ export default function Home() {
     if (!newName.trim()) return;
     setNodes([{ id: Date.now().toString(), name: newName }, ...nodes]);
     setNewName("");
-    setCurrentIndex(null); // ✅ FIX: reset traversal on structural change
+    setCurrentIndex(null); 
     setTraversalDone(false);
   };
 
   const deleteHead = () => {
     if (nodes.length === 0) return;
     setNodes(nodes.slice(1));
-    setCurrentIndex(null); // ✅ FIX: reset traversal on structural change
+    setCurrentIndex(null); 
     setTraversalDone(false);
   };
 
@@ -64,10 +63,10 @@ export default function Home() {
         now. Nobody knows the full chain — only who they told next.
       </p>
 
-      {/* ✅ FIX: traversal done banner */}
+   
       {traversalDone && (
         <p className="mt-4 text-yellow-400 font-semibold">
-          ✅ Traversal complete — reached the end of the list!
+          Traversal complete — reached the end of the list!
         </p>
       )}
 
@@ -77,7 +76,7 @@ export default function Home() {
         </button>
         <button
           onClick={nextStep}
-          disabled={traversalDone || currentIndex === null}  // ✅ FIX: disable when done
+          disabled={traversalDone || currentIndex === null} 
           className="btn disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Next Step
